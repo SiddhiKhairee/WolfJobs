@@ -58,7 +58,7 @@ export async function signup(
       toast.error("Sign up Failed");
     }
   } catch (error) {
-    // Handle errors, could be network issues, etc.
-    toast.error("Sign up Failed: Unknown error");
+    toast.error(error.response.data.message);
+    //toast.error("Sign up Failed: Unknown error");
   }
 }
