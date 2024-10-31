@@ -80,7 +80,7 @@ const Notifications = () => {
           {acceptedJobs.length > 0 ? (
             acceptedJobs.map(job => (
               <div onClick={() => handleJobClick(job._id)} key={job._id}>
-                <JobListTile data={job} action="view-details" />
+                <JobListTile data={job} action="view-details" onJobClicked={() => {}}/>
               </div>
             ))
           ) : (
@@ -100,7 +100,7 @@ const Notifications = () => {
           {rejectedJobs.length > 0 ? (
             rejectedJobs.map(job => (
               <div onClick={() => handleJobClick(job._id)} key={job._id}>
-                <JobListTile data={job} action="view-details" />
+                <JobListTile data={job} action="view-details" onJobClicked={() => {}}/>
               </div>
             ))
           ) : (

@@ -14,6 +14,7 @@ describe("JobListTile", () => {
             pay: "100?",
             status: "closed",
           }}
+          onJobClicked={() => {}}
         />
       </MemoryRouter>
     );
