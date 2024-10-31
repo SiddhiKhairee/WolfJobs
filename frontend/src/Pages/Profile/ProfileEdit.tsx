@@ -22,14 +22,17 @@ type FormValues = {
   password: string;
   address: string;
   role: string;
-  skills: string;
+  skills: string[];
   phonenumber: string;
   availability: string;
   gender: string;
   hours: string;
 };
 
+const skillOptions = ["Code", "Cook", "Sport"];
+
 const ProfileEdit = ({ props }: { props: any }) => {
+
   const {
     name,
     email,
@@ -41,7 +44,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
     gender,
     hours,
   } = props;
-
+  console.log('prop',props);
   const form = useForm<FormValues>({
     defaultValues: {
       name: name,
@@ -55,7 +58,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
       hours: hours,
     },
   });
-
   const [availabilityDrop, setAvailabilityDtop] = useState(availability);
 
   const userId = useUserStore((state) => state.id);
@@ -65,9 +67,17 @@ const ProfileEdit = ({ props }: { props: any }) => {
 
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
+  //const setSkill;
+  const [newskills,setSkill] = useState<string[]>(skills); // Set up skills state as an array
+  const handleSkillsChange = (event: SelectChangeEvent<string[]>) => {
+    const { value } = event.target;
+    //const skills: string[] = Array.isArray(value) ? value : [value];
+    setSkill(Array.isArray(value) ? value : [value]);
+  };
 
   const handleSaveProfile = (data: FormValues) => {
     const url = "http://localhost:8000/api/v1/users/edit";
+    console.log(data);
     const body = {
       id: userId,
       name: data.name,
@@ -78,7 +88,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
       availability: availabilityDrop,
       hours: data.hours,
       gender: data.gender,
-      skills: data.skills,
+      skills: newskills,
       phonenumber: data.phonenumber,
     };
 
@@ -167,7 +177,35 @@ const ProfileEdit = ({ props }: { props: any }) => {
                 },
               }}
             />
-            <TextField
+            <FormControl>
+              <InputLabel id="skills-id">Skills</InputLabel>
+              <Select
+                value={newskills}
+                multiple
+                labelId="skills-id"
+                label="Skills"
+                {...register("skills")}
+                id="skills-id-1"
+                sx={{
+                  "& label": { paddingLeft: (theme) => theme.spacing(1) },
+                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
+                  "& fieldset": {
+                    paddingLeft: (theme) => theme.spacing(1.0),
+                    borderRadius: "10px",
+                  },
+                }}
+                onChange={handleSkillsChange}
+                renderValue={(selected) => selected.join(', ')}
+              >
+                {skillOptions.map((skill) => (
+                  <MenuItem key={skill} value={skill}>
+                    {skill}
+                  </MenuItem>
+                ))}
+                
+              </Select>
+            </FormControl>
+            {/* <TextField
               label="Skills"
               type="text"
               {...register("skills")}
@@ -181,7 +219,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
                   borderRadius: "10px",
                 },
               }}
-            />
+            /> */}
             <TextField
               label="Phone number"
               type="text"
