@@ -138,7 +138,7 @@ const Dashboard = () => {
       (item) => item.jobid === jobId
     )
 
-    setApplicationId(application!!._id)
+    setApplicationId(application !== undefined ? application._id : "")
   }
 
   return (
