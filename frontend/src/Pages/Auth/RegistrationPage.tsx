@@ -153,25 +153,6 @@ const RegistrationPage = () => {
                   },
                 }}
               />
-              {/* <TextField
-                label="Skills"
-                type="text"
-                {...register("skills", {
-                  required: "Skills is required",
-                })}
-                error={!!errors.skills}
-                helperText={errors.skills?.message}
-                sx={{
-                  "& label": {
-                    paddingLeft: (theme) => theme.spacing(1),
-                  },
-                  "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                  "& fieldset": {
-                    paddingLeft: (theme) => theme.spacing(1.5),
-                    borderRadius: "10px",
-                  },
-                }}
-              /> */}
               <FormControl fullWidth>
                 <InputLabel id="skills-label">Skills</InputLabel>
                 <Select
