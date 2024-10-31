@@ -73,19 +73,8 @@ module.exports.signUp = async function (req, res) {
 
     User.findOne({ email: req.body.email }, function (err, user) {
       if (user) {
-        res.set("Access-Control-Allow-Origin", "*");
-        return res.json(200, {
-          message: "Sign Up Successful, here is your token, plz keep it safe",
-
-          data: {
-            //user.JSON() part gets encrypted
-
-            token: jwt.sign(user.toJSON(), "wolfjobs", {
-              expiresIn: "100000",
-            }),
-            user,
-          },
-          success: true,
+        return res.json(400, {
+          message: "Email already exist!",
         });
       }
 
