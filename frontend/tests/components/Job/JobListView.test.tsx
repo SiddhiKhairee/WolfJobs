@@ -7,7 +7,7 @@ describe("JobListView", () => {
   it("renders JobListView", () => {
     render(
       <MemoryRouter>
-        <JobListView JobList={{ _id: 1 }} title="All jobs" />
+        <JobListView JobList={{ _id: 1 }} title="All jobs" onJobClicked={() => {}}/>
       </MemoryRouter>
     );
   });
