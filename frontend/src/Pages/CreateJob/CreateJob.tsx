@@ -18,14 +18,18 @@ type FormValues = {
   jobtype: string;
   location: string;
   pay: string;
-  requiredSkills: string;
+  requiredSkills: [];
   description: string;
 };
-
+const skillOptions = ["Code", "Cook", "Sport"];
 const CreateJob = () => {
   const navigate = useNavigate();
-  const [requiredSkills, setRequiredSkills] = useState("");
-
+  const [requiredSkills,setRquiedSkill] = useState<string[]>([]);
+  const handleSkillsChange = (event: SelectChangeEvent<string[]>) => {
+    const { value } = event.target;
+    //const skills: string[] = Array.isArray(value) ? value : [value];
+    setRquiedSkill(Array.isArray(value) ? value : [value]);
+  };
   const form = useForm<FormValues>({
     defaultValues: {
       role: "",
@@ -183,7 +187,24 @@ const CreateJob = () => {
                   minRows={4}
                   multiline
                 />
-                <TextField
+                <FormControl>
+                  <InputLabel id="skills-label">Required Skills</InputLabel>
+                  <Select
+                    labelId="Required Skills"
+                    id="Required Skills"
+                    multiple
+                    value={requiredSkills}
+                    onChange={handleSkillsChange}
+                    //renderValue={(selected) => selected.join(', ')} // Display selected skills as a comma-separated list
+                  >
+                    {skillOptions.map((skill) => (
+                      <MenuItem key={skill} value={skill}>
+                        {skill}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                {/* <TextField
                   label="Required Skills"
                   type="text"
                   {...register("requiredSkills", {
@@ -201,7 +222,7 @@ const CreateJob = () => {
                       borderRadius: "10px",
                     },
                   }}
-                />
+                /> */}
                 <Button
                   type="submit"
                   variant="outlined"
