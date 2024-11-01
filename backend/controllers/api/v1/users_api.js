@@ -301,7 +301,7 @@ module.exports.fetchApplication = async function (req, res) {
 module.exports.createApplication = async function (req, res) {
   // let user = await User.findOne({ _id: req.body.id });
   // check = req.body.skills;
-
+  console.log(req);
   try {
     const existingApplication = await Application.findOne({
       applicantid: req.body.applicantId,
@@ -315,6 +315,13 @@ module.exports.createApplication = async function (req, res) {
         error: true,
       });
     }
+    // User.findOne({ email: req.body.resume }, function (err, user) {
+    //   if (user) {
+    //     return res.json(400, {
+    //       message: "Email already exist!",
+    //     });
+    //   }
+    // });
 
     let application = await Application.create({
       // applicantemail: req.body.applicantemail,
