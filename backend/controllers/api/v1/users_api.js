@@ -238,6 +238,33 @@ module.exports.getHistory = async function (req, res) {
   }
 };
 
+module.exports.editJob = async function (req, res) {
+  try {
+    const { id, name, type, location, pay, description, requiredSkills } = req.body;
+    const updatedJob = await Job.findByIdAndUpdate(
+      id, // Assuming `id` is passed in the request body
+      {
+        name,
+        type,
+        location,
+        pay,
+        description,
+        requiredSkills,
+      },
+      { new: true } // Return the updated document
+    );
+    console.log(updatedJob);
+    if (!updatedJob) {
+      return res.status(404).json({ error: "Job not found" });
+    }
+
+    res.status(200).json({ message: "Job updated successfully", job: updatedJob });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to update job" });
+  }
+}
+
 module.exports.createJob = async function (req, res) {
   let user = await User.findOne({ _id: req.body.id });
   check = req.body.skills;
