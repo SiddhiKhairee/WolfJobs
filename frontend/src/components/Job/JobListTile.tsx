@@ -27,7 +27,6 @@ const JobListTile = (props: any) => {
         skill.trim().toLowerCase()
       );
       const requiredSkillsArray = job.requiredSkills
-        .split(",")
         .map((skill) => skill.trim().toLowerCase());
       const isMatch = requiredSkillsArray.some((skill) =>
         applicantSkillsArray.includes(skill)

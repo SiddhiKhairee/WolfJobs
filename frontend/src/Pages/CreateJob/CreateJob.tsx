@@ -154,7 +154,7 @@ const CreateJob = () => {
                   }}
                 />
                 <TextField
-                  label="Pay"
+                  label="Pay(per hour)"
                   type="number"
                   {...register("pay", {
                     required: "Job pay is required",

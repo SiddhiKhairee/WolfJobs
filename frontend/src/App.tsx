@@ -20,6 +20,7 @@ import Resume from "./Pages/Resume/Resume";
 import Chat from "./Pages/Chat/Chat";
 import ResumeViewer from "./components/Resume/ResumeViewer";
 import Notifications from "./Pages/Notifications/Notifications";
+import JobEdit from "./components/Job/JobEdit";
 
 const App = () => {
   return (
@@ -53,6 +54,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <CreateJob />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/editJob"
+            element={
+              <ProtectedRoute>
+                <JobEdit />
               </ProtectedRoute>
             }
           />
