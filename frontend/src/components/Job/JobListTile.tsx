@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import { useSearchParams } from "react-router-dom";
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import { useUserStore } from "../../store/UserStore";
+import { Button } from "@mui/material";
 
 const JobListTile = (props: any) => {
-  // const { data, action }: { data: Job; action: string | undefined } = props;
-  const { data, onJobClicked }: { data: Job, onJobClicked: Function } = props;
+  const navigate = useNavigate();
+
+  const { data, onJobClicked }: { data: Job; onJobClicked: Function } = props;
   let action = "view-more";
 
   const getMatchStatus = (job: Job) => {
@@ -17,9 +23,9 @@ const JobListTile = (props: any) => {
 
     const skills = useUserStore((state) => state.skills);
     if (skills && job.requiredSkills) {
-      const applicantSkillsArray = skills
-        
-        .map((skill) => skill.trim().toLowerCase());
+      const applicantSkillsArray = skills.map((skill) =>
+        skill.trim().toLowerCase()
+      );
       const requiredSkillsArray = job.requiredSkills
         .split(",")
         .map((skill) => skill.trim().toLowerCase());
@@ -92,6 +98,20 @@ const JobListTile = (props: any) => {
 
   // const isClosed = data.status !== "0";
 
+  const handleApplicationChats = (e: any) => {
+    e.stopPropagation();
+    try {
+      const params = new URLSearchParams();
+      params.append("jobId", data._id);
+
+      navigate({
+        pathname: `/chat`,
+        search: params.toString(),
+      });
+    } catch (error) {
+      console.error("Navigation error:", error);
+    }
+  };
   const handleKnowMore = (e: any) => {
     e.stopPropagation();
     console.log("Know more");
@@ -169,6 +189,14 @@ const JobListTile = (props: any) => {
             </div>
           </div>
           <div className="flex flex-col-reverse w-2/6 text-right">
+            {userRole === "Manager" && (
+              <Button
+                className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"
+                onClick={handleApplicationChats}
+              >
+                Applicant Chats&nbsp;
+              </Button>
+            )}
             {action === "view-more" || !action ? (
               <p
                 className="inline-flex items-center flex-row-reverse text-xs text-[#656565]"

@@ -6,5 +6,6 @@ const messageControllers = require("../controllers/messages_controller")
 
 router.post('/createMessage', jsonParser, messageControllers.createMessage)
 router.get('/fetchMessages',jsonParser, messageControllers.fetchMessages)
+router.get('/fetchListingChats', jsonParser, messageControllers.fetchListingChats)
 
 module.exports = router

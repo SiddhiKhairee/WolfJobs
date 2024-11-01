@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import JobDetailView from "../../components/Job/JobDetailView";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useUserStore } from "../../store/UserStore";
 import { useJobStore } from "../../store/JobStore";
 import { useApplicationStore } from "../../store/ApplicationStore";
 import JobListTile from "../../components/Job/JobListTile";
 import { Button, Fab } from "@mui/material";
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import ChatWindow from "../../components/ChatWindow";
-import { fetchMessages } from "../../api/message";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import ChatWindow from "../../components/Chat/ChatWindow";
+import { fetchMessages, sendMessage } from "../../api/message";
 
 const Dashboard = () => {
   const naviagte = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const updateName = useUserStore((state) => state.updateName);
   const updateEmail = useUserStore((state) => state.updateEmail);
@@ -119,27 +120,55 @@ const Dashboard = () => {
   }, [role, jobList, applicationList]);
 
   const [chats, setChats] = useState<any[]>([]);
-  const [applicationId, setApplicationId] = useState<string>("");
+  const [selectedApplication, setSelectedApplication] =
+    useState<any>(undefined);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleFabClick = async () => {
     setIsChatOpen(true);
     try {
-      const data = await fetchMessages(applicationId); // Trigger the API call here
+      const data = await fetchMessages(selectedApplication._id); // Trigger the API call here
       setChats(data);
     } catch (error) {
-      console.error('Error fetching chats:', error);
+      console.error("Error fetching chats:", error);
+      toast.error("Error fetching chats");
     }
   };
 
   const findAndSetApplicationId = (jobId: string) => {
-    console.log(jobId)
-    const application = applicationList?.find(
-      (item) => item.jobid === jobId
-    )
+    const application = applicationList?.find((item) => item.jobid === jobId);
 
-    setApplicationId(application !== undefined ? application._id : "")
-  }
+    setSelectedApplication(application !== undefined ? application : {});
+  };
+
+  const handleSendMessage = async (message: string) => {
+    try {
+      const currentUser = localStorage.getItem("userId") || "";
+      const managerId = selectedApplication.managerid;
+      const applicantId = selectedApplication.applicantid;
+      let fromUser: string, toUser: string;
+      if (currentUser === selectedApplication.applicantid) {
+        fromUser = currentUser;
+        toUser = managerId;
+      } else {
+        fromUser = managerId;
+        toUser = applicantId;
+      }
+      await sendMessage(message, fromUser, toUser, selectedApplication._id);
+      const data = await fetchMessages(selectedApplication._id); // Trigger the API call here
+      setChats(data);
+    } catch (error) {
+      console.error("Error sending chat:", error);
+      toast.error("Error sending chat");
+    }
+  };
+
+  const refreshChats = async (id: string) => {
+    if (id) {
+      const data = await fetchMessages(id); // Trigger the API call here
+      setChats(data);
+    }
+  };
 
   return (
     <>
@@ -165,30 +194,44 @@ const Dashboard = () => {
                     : "view-application";
                 }
 
-                return <JobListTile data={job} key={job._id} action={action} onJobClicked={(jobId: string) => findAndSetApplicationId(jobId)} />;
+                return (
+                  <JobListTile
+                    data={job}
+                    key={job._id}
+                    action={action}
+                    onJobClicked={(jobId: string) =>
+                      findAndSetApplicationId(jobId)
+                    }
+                  />
+                );
               })}
             </div>
           </>
           <JobDetailView />
         </div>
       </div>
-      <ChatWindow 
-        isOpen={isChatOpen} 
-        chats={chats} 
-        onClose={() => setIsChatOpen(false)} 
+      <ChatWindow
+        isOpen={isChatOpen}
+        chats={chats}
+        onClose={() => setIsChatOpen(false)}
+        sendMessage={handleSendMessage}
+        refreshChats={refreshChats}
+        application={selectedApplication}
       />
-      <Fab
-        color="primary"
-        aria-label="open chat"
-        sx={{
-          position: 'fixed',
-          bottom: (theme) => theme.spacing(2),
-          right: (theme) => theme.spacing(2),
-        }}
-        onClick={handleFabClick}
-      >
-        <ChatBubbleIcon />
-      </Fab>
+      {selectedApplication !== undefined && role == "Applicant" && (
+        <Fab
+          color="primary"
+          aria-label="open chat"
+          sx={{
+            position: "fixed",
+            bottom: (theme) => theme.spacing(2),
+            right: (theme) => theme.spacing(2),
+          }}
+          onClick={handleFabClick}
+        >
+          <ChatBubbleIcon />
+        </Fab>
+      )}
       {role === "Manager" && (
         <div className="fixed p-4 bottom-3 right-3">
           <Button
