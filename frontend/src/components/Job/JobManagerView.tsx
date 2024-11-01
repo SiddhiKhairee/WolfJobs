@@ -8,12 +8,13 @@ import JobGrading from "./JobGrading";
 import JobRating from "./JobRating";
 import JobFinalReview from "./JobFinalReview";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const JobManagerView = (props: any) => {
   const { jobData }: { jobData: Job } = props;
   const role = useUserStore((state) => state.role);
   const userId = useUserStore((state) => state.id);
-
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewManager, setViewManager] = useState("job-screening");
 
@@ -42,6 +43,10 @@ const JobManagerView = (props: any) => {
       });
   };
 
+  const editJob =  () => {
+    navigate("/editJob", { state: { jobData } });
+  };
+
   return (
     <>
       {role === "Manager" &&
@@ -64,6 +69,22 @@ const JobManagerView = (props: any) => {
                 }}
               >
                 Close job
+              </Button>
+              <Button
+                onClick={editJob}
+                type="button"
+                variant="outlined"
+                style={{
+                  color: "#FF5353",
+                  borderColor: "#FF5353",
+                  // borderRadius: "10px",
+                  textTransform: "none",
+                  fontSize: "16px",
+                  minWidth: "200px",
+                  margin: "10px",
+                }}
+              >
+                Edit job
               </Button>
             </div>
             <div className="text-2xl my-4">Candidates Review</div>

@@ -205,21 +205,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
                 
               </Select>
             </FormControl>
-            {/* <TextField
-              label="Skills"
-              type="text"
-              {...register("skills")}
-              error={!!errors.skills}
-              helperText={errors.skills?.message}
-              sx={{
-                "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                "& fieldset": {
-                  paddingLeft: (theme) => theme.spacing(1.5),
-                  borderRadius: "10px",
-                },
-              }}
-            /> */}
             <TextField
               label="Phone number"
               type="text"
