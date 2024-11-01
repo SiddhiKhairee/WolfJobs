@@ -17,6 +17,7 @@ import LandingPage from "./Pages/Auth/landingPage";
 import JobQuestionnaire from "./Pages/CreateJob/jobQuestionnaire";
 import JobPreview from "./Pages/CreateJob/jobPreview";
 import Resume from "./Pages/Resume/Resume";
+import Chat from "./Pages/Chat/Chat";
 import ResumeViewer from "./components/Resume/ResumeViewer";
 import Notifications from "./Pages/Notifications/Notifications";
 
@@ -118,7 +119,14 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute>
+                <Chat />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<>Error 404</>} />
         </Routes>
       </div>

@@ -86,6 +86,15 @@ const JobScreening = (props: any) => {
                 </div>
               </div>
               <div className="flex flex-row">
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      return handleAccept(item._id);
+                    }}
+                    style={{ color: "#0262DE" }}
+                  >
+                    Chat
+                  </Button>
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
