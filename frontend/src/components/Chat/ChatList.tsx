@@ -18,7 +18,7 @@ const ChatList = ({
             primary={chat.applicantName}
             secondary={
               <small>
-                {chat.lastMessage.message} • {new Date(chat.lastMessage.createdAt).toLocaleTimeString()}
+                {chat.lastMessage !== null ? chat.lastMessage.message : ""} • {chat.lastMessage !== null ? new Date(chat.lastMessage.createdAt).toLocaleTimeString() : ""}
               </small>
             }
           />
