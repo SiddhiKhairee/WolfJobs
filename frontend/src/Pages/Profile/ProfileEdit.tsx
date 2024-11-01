@@ -29,7 +29,7 @@ type FormValues = {
   hours: string;
 };
 
-const skillOptions = ["Code", "Cook", "Sport"];
+const skillOptions = ["Coding", "Cooking", "Fitness"];
 
 const ProfileEdit = ({ props }: { props: any }) => {
 
