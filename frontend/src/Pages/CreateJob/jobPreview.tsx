@@ -19,7 +19,7 @@ type FormValuesDetails = {
   location: string;
   pay: string;
   description: string;
-  requiredSkills: string;
+  requiredSkills: [];
 };
 
 const JobPreview = () => {
@@ -33,9 +33,11 @@ const JobPreview = () => {
   const navigate = useNavigate();
   const userId = useUserStore((state) => state.id);
 
+
+
   const onSubmit = (e: any) => {
     e.preventDefault();
-
+    console.log(userId);
     const url = `http://localhost:8000/api/v1/users/createjob`;
     const body = {
       id: userId,
