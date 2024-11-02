@@ -41,7 +41,7 @@ const ChatView = ({ selectedChat, refreshChats }: any) => {
     return () => {
       clearInterval(intervalId); // Cleanup on component unmount
     };
-  }, []);
+  }, [selectedChat]);
 
   return (
     <Box

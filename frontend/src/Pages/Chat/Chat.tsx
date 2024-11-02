@@ -34,7 +34,9 @@ const Chat = () => {
   const refreshChats = async () => {
     const applicationId = searchParams.get("applicationId") || "";
     fetchChats().then((data) => {
+      console.log(data);
       const c = data!!.find((chat) => chat.applicationId === applicationId);
+      console.log(c)
       setSelectedChat(c);
     });
   };
