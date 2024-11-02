@@ -25,7 +25,7 @@ type FormValues = {
   description: string;
 };
 
-const skillOptions = ["Code", "Cook", "Sport"];
+const skillOptions = ["Coding", "Cooking", "Fitness"];
 
 const JobEdit = () => {
   const navigate = useNavigate();
