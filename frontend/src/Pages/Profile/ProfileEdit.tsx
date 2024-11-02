@@ -68,7 +68,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
   //const setSkill;
-  const [newskills,setSkill] = useState<string[]>(skills); // Set up skills state as an array
+  const [newskills,setSkill] = useState<string[]>(skills || []); // Set up skills state as an array
   const handleSkillsChange = (event: SelectChangeEvent<string[]>) => {
     const { value } = event.target;
     //const skills: string[] = Array.isArray(value) ? value : [value];
