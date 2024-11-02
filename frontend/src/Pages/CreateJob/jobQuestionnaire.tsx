@@ -1,4 +1,5 @@
 import { Button, Stack, TextField } from "@mui/material";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -43,6 +44,11 @@ const JobQuestionnaire = () => {
     };
     navigate("/job_preview", body);
   };
+
+  useEffect(() => {
+    // const questions = fetchQs(des, skill)
+    
+  }, [])
   return (
     <>
       <div className="flex flex-row">

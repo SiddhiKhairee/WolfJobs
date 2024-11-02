@@ -11,6 +11,7 @@ router.get('/', homeController.home);
 router.use('/users',require('./users'));
 router.use('/message', require('./message'));
 router.use('/api',require('./api'));
+router.use('/ai', require('./ai'));
 
 module.exports = router;
 

@@ -21,7 +21,7 @@ type FormValues = {
   requiredSkills: [];
   description: string;
 };
-const skillOptions = ["Code", "Cook", "Sport"];
+const skillOptions = ["Coding", "Cooking", "Fitness"];
 const CreateJob = () => {
   const navigate = useNavigate();
   const [requiredSkills,setRquiedSkill] = useState<string[]>([]);
@@ -154,7 +154,7 @@ const CreateJob = () => {
                   }}
                 />
                 <TextField
-                  label="Pay"
+                  label="Pay(per hour)"
                   type="number"
                   {...register("pay", {
                     required: "Job pay is required",

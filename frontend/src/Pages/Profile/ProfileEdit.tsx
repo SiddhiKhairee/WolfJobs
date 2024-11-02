@@ -29,7 +29,7 @@ type FormValues = {
   hours: string;
 };
 
-const skillOptions = ["Code", "Cook", "Sport"];
+const skillOptions = ["Coding", "Cooking", "Fitness"];
 
 const ProfileEdit = ({ props }: { props: any }) => {
 
@@ -68,7 +68,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
   //const setSkill;
-  const [newskills,setSkill] = useState<string[]>(skills); // Set up skills state as an array
+  const [newskills,setSkill] = useState<string[]>(skills || []); // Set up skills state as an array
   const handleSkillsChange = (event: SelectChangeEvent<string[]>) => {
     const { value } = event.target;
     //const skills: string[] = Array.isArray(value) ? value : [value];
@@ -205,21 +205,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
                 
               </Select>
             </FormControl>
-            {/* <TextField
-              label="Skills"
-              type="text"
-              {...register("skills")}
-              error={!!errors.skills}
-              helperText={errors.skills?.message}
-              sx={{
-                "& label": { paddingLeft: (theme) => theme.spacing(1) },
-                "& input": { paddingLeft: (theme) => theme.spacing(2.5) },
-                "& fieldset": {
-                  paddingLeft: (theme) => theme.spacing(1.5),
-                  borderRadius: "10px",
-                },
-              }}
-            /> */}
             <TextField
               label="Phone number"
               type="text"

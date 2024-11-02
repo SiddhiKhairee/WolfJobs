@@ -20,7 +20,7 @@ type FormValues = {
   confirmPassword: string;
   skills: string[];
 };
-const skillOptions = ["Code", "Cook", "Sport"];
+const skillOptions = ["Coding", "Cooking", "Fitness"];
 
 const RegistrationPage = () => {
   const [skills, setSkills] = useState<string[]>([]); // Set up skills state as an array
