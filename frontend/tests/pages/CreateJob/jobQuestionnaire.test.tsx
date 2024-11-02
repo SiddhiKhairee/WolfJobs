@@ -1,13 +1,19 @@
-import { render, screen } from "@testing-library/react";
-import React from "react";
+import { render } from "@testing-library/react";
 import JobQuestionnaire from "../../../src/Pages/CreateJob/jobQuestionnaire";
-import { MemoryRouter } from "react-router";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 describe("JobQuestionnaire", () => {
-  it("renders JobQuestionnaire", () => {
+  it("renders JobQuestionnaire with state", () => {
+    const initialState = {
+      description: "Test job description",
+      requiredSkills: ["Skill 1", "Skill 2"],
+    };
+
     render(
-      <MemoryRouter>
-        <JobQuestionnaire />
+      <MemoryRouter initialEntries={[{ pathname: "/create-job", state: initialState }]}>
+        <Routes>
+          <Route path="/create-job" element={<JobQuestionnaire />} />
+        </Routes>
       </MemoryRouter>
     );
   });
