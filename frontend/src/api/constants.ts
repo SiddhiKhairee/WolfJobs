@@ -7,3 +7,4 @@ export const createJobURL = `${API_ROOT}${API_V1}/users/createjob`;
 export const fetchMessageURL = `${API_ROOT}/message/fetchMessages`;
 export const fetchListingChatsURL = `${API_ROOT}/message/fetchListingChats`;
 export const createMessageURL = `${API_ROOT}/message/createMessage`;
+export const aiQuestionsURL = `${API_ROOT}/ai/generateQuestions`;
