@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import React from "react";
 import RegistrationPage from "../../../src/Pages/Auth/RegistrationPage";
 import { MemoryRouter } from "react-router";
+
 
 describe("RegistrationPage", () => {
   it("renders RegistrationPage", () => {
@@ -10,7 +11,9 @@ describe("RegistrationPage", () => {
         <RegistrationPage />
       </MemoryRouter>
     );
-    // const headline = screen.getByText(/Hello/i);
-    // expect(headline).toBeInTheDocument();
+    //const headline = screen.getByText(/Hello/i);
+    //expect(headline).toBeInTheDocument();
   });
 });
+
+
