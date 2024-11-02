@@ -3,7 +3,8 @@ const isUndefinedOrEmpty = require("../utils/common");
 
 function runPythonScript(jobDescription, skill) {
     // Construct the command, passing arguments to the Python script
-    const command = `"C:\\Users\\siddh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" controllers\\script.py "${jobDescription}" "${skill}"`;
+    // Siddhi - const command = `"C:\\Users\\siddh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" controllers\\script.py "${jobDescription}" "${skill}"`;
+    const command = `python3 ./controllers/script.py "${jobDescription}" "${skill}"`;
 
     return new Promise((resolve, reject) => {
         exec(command, (error, stdout, stderr) => {

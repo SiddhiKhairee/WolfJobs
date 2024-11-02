@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { generateQuestions } from "../../api/ai";
 
 type FormValues = {
   question1: string;
@@ -27,7 +28,7 @@ const JobQuestionnaire = () => {
     },
   });
 
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, setValue } = form;
   const { errors } = formState;
 
   const onSubmit = (data: FormValues) => {
@@ -45,10 +46,30 @@ const JobQuestionnaire = () => {
     navigate("/job_preview", body);
   };
 
+  const fetchAiQuestions = async (description: string, skill: string): Promise<string[]> => {
+    const questions = await generateQuestions(description, skill[0]);
+    return Array.isArray(questions) ? questions : [];
+  }
+
   useEffect(() => {
-    // const questions = fetchQs(des, skill)
-    
-  }, [])
+    const setDefaultValues = async () => {
+      try {
+        const questions = await fetchAiQuestions(state.description, state.requiredSkills);
+        
+        if (questions && questions.length >= 4) {
+          setValue('question1', questions[0]);
+          setValue('question2', questions[1]);
+          setValue('question3', questions[2]);
+          setValue('question4', questions[3]);
+        }
+      } catch (error) {
+        console.error('Error fetching AI questions:', error);
+      }
+    };
+
+    setDefaultValues();
+  }, [state.description, state.requiredSkills, setValue]);
+
   return (
     <>
       <div className="flex flex-row">
@@ -91,7 +112,6 @@ const JobQuestionnaire = () => {
             >
               <Stack spacing={2} width={600}>
                 <TextField
-                  label="Question 1"
                   type="text"
                   {...register("question1", {
                     required: "Question is required",
@@ -108,7 +128,6 @@ const JobQuestionnaire = () => {
                   }}
                 />
                 <TextField
-                  label="Question 2"
                   type="text"
                   {...register("question2", {
                     required: "Question is required",
@@ -125,7 +144,6 @@ const JobQuestionnaire = () => {
                   }}
                 />
                 <TextField
-                  label="Question 3"
                   type="text"
                   {...register("question3", {
                     required: "Question is required",
@@ -142,7 +160,6 @@ const JobQuestionnaire = () => {
                   }}
                 />
                 <TextField
-                  label="Question 4"
                   type="text"
                   {...register("question4", {
                     required: "Question is required",
