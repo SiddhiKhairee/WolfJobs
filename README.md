@@ -124,7 +124,7 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 `pip install spacy scikit-learn`
 `python -m spacy download en_core_web_sm`
 
-**Step 2: Backend Setup**
+**Step 3: Backend Setup**
 
 - Open a terminal window and navigate to the backend directory by executing the command: _cd backend_
 
@@ -132,7 +132,7 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 - Start the backend service with the following command: _npm start_
 
-**Step 3: Frontend Setup**
+**Step 4: Frontend Setup**
 
 - Open a new terminal window and navigate to the frontend directory: _cd frontend_
 
@@ -140,7 +140,7 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 - Start the development server: _npm run dev_
 
-**Step 4: Open [http://localhost:5173](http://localhost:5173) to view it in the browser.**
+**Step 5: Open [http://localhost:5173](http://localhost:5173) to view it in the browser.**
 
 **Congratulations! The project should now be up and running successfully.**
 
@@ -178,8 +178,6 @@ Your app is ready to be deployed!
 **6. Candidate Matching Percentage** – WolfJobs applicant skill matching feature will include a percentage to how fit a candidate's skills are based on the job's required skills. Applicants will see a match percentage indicating how likely they are to get accepted and recieve an interview. 
 
 **7. Matching based on Resume** – WolfJobs applicants will be able to parse their resume and WolfJobs will extract key skills from the resume and compare it with required job skills to give candidates job matching status.
-
-**8. Database Security and Hashing** – WolfJobs currently does not securely store the password and user information in the database. This data needs to be protected and hashed to ensure security.
 
 
 # Contributors
