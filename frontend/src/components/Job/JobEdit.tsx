@@ -25,13 +25,13 @@ type FormValues = {
   description: string;
 };
 
-const skillOptions = ["Code", "Cook", "Sport"];
+const skillOptions = ["Coding", "Cooking", "Fitness"];
 
 const JobEdit = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const jobData = location.state.jobData as FormValues; // Receive the jobData from the previous page
- 
+  const jobData = location.state?.jobData as FormValues; // Receive the jobData from the previous page
+  
 
   const [requiredSkills, setRequiredSkills] = useState<string[]>(jobData?.requiredSkills || []);
   const [type, setJobType] = useState(jobData?.type || "full-time");

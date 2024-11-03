@@ -31,17 +31,19 @@
 
 # What's New:
 
- - **New Screens Added!**
- - Branding, Colours and Typography
- - Components & States
- - Mutliple UI Screens _flows_ for Student & Manager Roles
- - [https://www.figma.com/file/sqt0gh5H7bZEkryKZ9jFnK/WolfJobs](https://www.figma.com/file/sqt0gh5H7bZEkryKZ9jFnK/WolfJobs)
+- New Chat Interface: Direct communication between applicants and recruiters!
 
- - Seamless Resume Upload and Parsing: We've made it a breeze for applicants to submit their resumes for each job posting, while employers can effortlessly access and view the stored PDFs in MongoDB.
- - Precision Application Matching: Say goodbye to the uncertainty of job applications! With our enhanced system, applicants now have the power to identify which jobs align perfectly with their skills and qualifications. WolfJobs will analyze your profile and inform you if you're a strong fit for a position.
- - Revamped Job Sorting and Search:  Our revamped job sorting and search features allows you to easily organize opportunities by pay, city, and employment type. Plus, you can perform specific job searches to find the perfect match.
-- Stay Informed with the Notifications Tab: Introduced our brand-new Notifications tab to WolfJobs. Now, you can receive timely updates on the status of your applications, ensuring you're always in the know about your job prospects. 
+- Job Editing function: Recruiters right now can edit the jobs that are already created!
 
+- Bug Fixes: Ensured unique emails for job applicants and recruiters.
+
+- Security Enhancement: adding salt and hashing to password, increase the safty of the password.
+
+- UI Revamp: Sleeker, user-friendly experience.
+
+- AI-Driven Question Suggestions: Tailored questions based on job description and required skill.
+  
+- Change skill and required skill to dropdownlist so the users and managers can easily select the skill-set they want and avoid strange answers.
 
 # Presentation Video
 
@@ -112,6 +114,16 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 **Step 1: Clone the Repository from this [link](https://github.com/deepr41/WolfJobs.git)**
 
+**Step 2: AI Script Setup**
+
+- run the virtual environment, activate it and isntall the package
+- please run the command below in the same directory
+
+`python3 -m venv .`
+`source ./bin/activate`
+`pip install spacy scikit-learn`
+`python -m spacy download en_core_web_sm`
+
 **Step 2: Backend Setup**
 
 - Open a terminal window and navigate to the backend directory by executing the command: _cd backend_
@@ -171,7 +183,16 @@ Your app is ready to be deployed!
 
 
 # Contributors
+  ## Iteration 3:
+  <table>
+  <tr>
+    <td align="center"><a href="https://github.com/katydu"><img src="https://avatars.githubusercontent.com/katydu" width="100px;" alt=""/><br /><b>Min-Ting Tu</b></a><br /></td>
+    <td align="center"><a href="https://github.com/shambu2k"><img src="https://avatars.githubusercontent.com/shambu2k" width="100px;" alt=""/><br /><b>Sidharth Shambu</b></a><br /></td>
+    <td align="center"><a href="https://github.com/SiddhiKhairee"><img src="https://avatars.githubusercontent.com/SiddhiKhairee" width="100px;" alt=""/><br /><b>Siddhi Khairee</b></a><br /></td>
+  </tr>
+</table>
 
+  ## Iteration 1:
   <table>
   <tr>
     <td align="center"><a href="https://github.com/deepr41"><img src="https://avatars.githubusercontent.com/deepr41" width="100px;" alt=""/><br /><b>Deepak Rajendran</b></a></td>

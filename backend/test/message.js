@@ -4,15 +4,9 @@ const app = require('../index'); // Assuming your Express app is in app.js
 const Message = require("../models/message");
 
 chai.should();
+
+
 chai.use(chaiHttp);
-
-// before(async () => {
-//   await mongoose.connect(process.env.MONGODB_URI || 'mongodb://mongodb:27018/wolfjobs_development', { useNewUrlParser: true, useUnifiedTopology: true });
-// });
-
-// after(async () => {
-//   await mongoose.disconnect();
-// });
 
 describe('Messages Controller', () => {
     describe('POST /messsage/createMessage', () => {
@@ -24,7 +18,7 @@ describe('Messages Controller', () => {
           applicationId: "6722e4be0f205dc7a0c0b2eb"
         };
   
-        chai.request(app)
+        chai.request("http://localhost:8000")
           .post('/messsage/createMessage')
           .send(messageData)
           .end((err, res) => {
@@ -38,7 +32,7 @@ describe('Messages Controller', () => {
       it('should handle errors during message creation', (done) => {
         const invalidData = {};
   
-        chai.request(app)
+        chai.request("http://localhost:8000")
           .post('/messsage/createMessage')
           .send(invalidData)
           .end((err, res) => {
@@ -93,7 +87,7 @@ describe('GET /fetchMessages', () => {
   });
 
   it('should return 400 when applicationId is missing', (done) => {
-    chai.request(app)
+    chai.request("http://localhost:8000")
       .get('/messsage/fetchMessages')
       .end((err, res) => {
         res.should.have.status(400);
