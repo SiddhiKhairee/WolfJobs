@@ -35,8 +35,8 @@ jobs:
           npm run build --if-present
       - name: Install packages and run tests backend
         working-directory: ./backend
-          run: |
-            npm i && npm test
+        run: |
+          npm i && npm test
       - name: Run tests & coverage
         working-directory: ./frontend
         run: |
