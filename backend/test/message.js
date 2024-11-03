@@ -2,7 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../index'); // Assuming your Express app is in app.js
 const Message = require("../models/message");
-const mongoose = require('mongoose');
 
 chai.should();
 chai.use(chaiHttp);
@@ -20,9 +19,9 @@ describe('Messages Controller', () => {
       it('should create a new message', (done) => {
         const messageData = {
           message: 'Test message',
-          fromUser: 'p123jr',
-          toUser: 'sdijgpo213k',
-          applicationId: "1231241"
+          fromUser: '6722e4be0f205dc7a0c0b2ea',
+          toUser: '6722e4be0f205dc7a0c0b2ec',
+          applicationId: "6722e4be0f205dc7a0c0b2eb"
         };
   
         chai.request(app)
@@ -55,9 +54,9 @@ describe('GET /fetchMessages', () => {
   beforeEach(async () => {
     // Create some test messages
     await Message.insertMany([
-      { applicantId: 'testApplicant', message: 'Message 1', timestamp: new Date('2023-01-01'), fromUser: "123214", toUser:"12332112fa" },
-      { applicantId: 'testApplicant', message: 'Message 2', timestamp: new Date('2023-01-02'), fromUser: "123214", toUser:"12332112fa" },
-      { applicantId: 'otherApplicant', message: 'Other Message', timestamp: new Date('2023-01-03'), fromUser: "123214", toUser:"12332112fa" }
+      { applicantId: '6722e4be0f205dc7a0c0b2ea', message: 'Message 1', timestamp: new Date('2023-01-01'), fromUser: "6722e4be0f205dc7a0c0b2ev", toUser:"6722e4be0f205dc7a0c0b2eb" },
+      { applicantId: '6722e4be0f205dc7a0c0b2ea', message: 'Message 2', timestamp: new Date('2023-01-02'), fromUser: "6722e4be0f205dc7a0c0b2e1", toUser:"6722e4be0f205dc7a0c0b243" },
+      { applicantId: '6722e4be0f205dc7a0c0b2ev', message: 'Other Message', timestamp: new Date('2023-01-03'), fromUser: "6722e4be0f205dc7a0c0b444", toUser:"6722e4be0f205dc7a0c0b34h" }
     ]);
   });
 
@@ -69,7 +68,7 @@ describe('GET /fetchMessages', () => {
   it('should fetch messages for a specific applicant', (done) => {
     chai.request(app)
       .get('/messsage/fetchMessages')
-      .query({ applicationId: 'application123' })
+      .query({ applicationId: '6722e4be0f205dc7a0c0b2eb' })
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
@@ -83,7 +82,7 @@ describe('GET /fetchMessages', () => {
   it('should sort messages by date', (done) => {
     chai.request(app)
       .get('/messsage/fetchMessages')
-      .query({ applicationId: 'application123' })
+      .query({ applicationId: '6722e4be0f205dc7a0c0b2eb' })
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an('object');
@@ -111,7 +110,7 @@ describe('GET /fetchMessages', () => {
     try {
       await chai.request(app)
         .get('/messsage/fetchMessages')
-        .query({ applicationId: 'testApplicant' });
+        .query({ applicationId: '6722e4be0f205dc7a0c0b2eb' });
     } catch (error) {
       error.response.should.have.status(500);
       error.response.body.should.be.an('object');
@@ -127,9 +126,9 @@ describe('GET /messsage/fetchMessages', () => {
     beforeEach(async () => {
       // Create some test messages
       await Message.insertMany([
-        { applicantId: 'testApplicant', content: 'Message 1', date: new Date('2023-01-01') },
-        { applicantId: 'testApplicant', content: 'Message 2', date: new Date('2023-01-02') },
-        { applicantId: 'otherApplicant', content: 'Other Message', date: new Date('2023-01-03') }
+        { applicantId: '6722e4be0f205dc7a0c0b2eb', content: 'Message 1', date: new Date('2023-01-01') },
+        { applicantId: '6722e4be0f205dc7a0c0b2eb', content: 'Message 2', date: new Date('2023-01-02') },
+        { applicantId: '6722e4be0f205dc7a0c0b2eb', content: 'Other Message', date: new Date('2023-01-03') }
       ]);
     });
   
@@ -141,7 +140,7 @@ describe('GET /messsage/fetchMessages', () => {
     it('should fetch messages for a specific applicant', (done) => {
       chai.request(app)
         .get('/messsage/fetchMessages')
-        .query({ applicationId: 'testApplicant' })
+        .query({ applicationId: '6722e4be0f205dc7a0c0b2eb' })
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');
@@ -155,7 +154,7 @@ describe('GET /messsage/fetchMessages', () => {
     it('should sort messages by date', (done) => {
       chai.request(app)
         .get('/messsage/fetchMessages')
-        .query({ applicationId: 'testApplicant' })
+        .query({ applicationId: '6722e4be0f205dc7a0c0b2eb' })
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.an('object');

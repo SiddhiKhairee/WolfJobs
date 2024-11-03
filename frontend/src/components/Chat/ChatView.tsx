@@ -95,7 +95,7 @@ const ChatView = ({ selectedChat, refreshChats }: any) => {
                 onChange={(e) => setMessage(e.target.value)}
                 sx={{ mr: 1 }}
               />
-              <IconButton color="primary" type="submit">
+              <IconButton color="primary" type="submit" aria-label="send message">
                 <SendIcon />
               </IconButton>
             </form>

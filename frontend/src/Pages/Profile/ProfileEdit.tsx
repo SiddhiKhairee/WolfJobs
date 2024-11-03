@@ -98,7 +98,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
         return;
       }
       toast.success("Saved profile");
-      login(email, password, navigate);
+      navigate("/logout");
     });
   };
 
