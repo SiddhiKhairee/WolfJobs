@@ -173,7 +173,15 @@ Your app is ready to be deployed!
 
 
 # Contributors
-
+  ## Iteration 3:
+  <table>
+  <tr>
+    <td align="center"><a href="https://github.com/katydu"><img src="https://avatars.githubusercontent.com/katydu" width="100px;" alt=""/><br /><b>Min-Ting Tu</b></a><br /></td>
+    <td align="center"><a href="https://github.com/shambu2k"><img src="https://avatars.githubusercontent.com/shambu2k" width="100px;" alt=""/><br /><b>Sidharth Shambu</b></a><br /></td>
+    <td align="center"><a href="https://github.com/SiddhiKhairee"><img src="https://avatars.githubusercontent.com/SiddhiKhairee" width="100px;" alt=""/><br /><b>Siddhi Khairee</b></a><br /></td>
+  </tr>
+</table>
+  ## Iteration 1:
   <table>
   <tr>
     <td align="center"><a href="https://github.com/deepr41"><img src="https://avatars.githubusercontent.com/deepr41" width="100px;" alt=""/><br /><b>Deepak Rajendran</b></a></td>
