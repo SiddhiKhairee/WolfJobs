@@ -107,7 +107,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <IconButton color="primary" type="submit">
+            <IconButton color="primary" type="submit" aria-label="send message">
               <SendIcon />
             </IconButton>
           </form>
