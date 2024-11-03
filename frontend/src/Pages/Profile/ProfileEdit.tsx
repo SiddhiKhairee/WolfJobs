@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../store/UserStore";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../deprecateded/auth";
 
 type FormValues = {
   name: string;
