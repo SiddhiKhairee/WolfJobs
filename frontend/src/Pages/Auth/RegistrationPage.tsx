@@ -48,8 +48,6 @@ const RegistrationPage = () => {
   };
 
   const onSubmit = (data: FormValues) => {
-    console.log("form submitted");
-    console.log(data, skills);
     signup(
       data.email,
       data.password,

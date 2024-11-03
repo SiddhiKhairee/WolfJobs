@@ -59,7 +59,6 @@ export async function login(email: string, password: string, navigate: any) {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("Login data", data);
       if (data.success) {
         localStorage.setItem("token", data.data.token);
         navigate("/dashboard");

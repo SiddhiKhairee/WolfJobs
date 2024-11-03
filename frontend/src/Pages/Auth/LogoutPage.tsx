@@ -32,7 +32,6 @@ const LogoutPage = () => {
     updateIsLoggedIn(false);
 
     navigate("/login");
-    console.log("Logged out");
   }, []);
 
   return <></>;

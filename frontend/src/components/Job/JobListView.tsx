@@ -5,7 +5,6 @@ const JobsListView = (props: any) => {
   const { jobsList, title } = props;
 
   useEffect(() => {
-    console.log(jobsList);
   }, [jobsList]);
 
   return (

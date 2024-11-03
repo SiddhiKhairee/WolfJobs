@@ -42,7 +42,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
     availability,
     gender
   } = props;
-  //console.log('prop',props);
   const form = useForm<FormValues>({
     defaultValues: {
       name: name,
@@ -74,7 +73,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
 
   const handleSaveProfile = (data: FormValues) => {
     const url = "http://localhost:8000/api/v1/users/edit";
-    console.log(data);
     const body = {
       id: userId,
       name: data.name,

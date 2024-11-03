@@ -262,7 +262,6 @@ module.exports.editJob = async function (req, res) {
       },
       { new: true } // Return the updated document
     );
-    console.log(updatedJob);
     if (!updatedJob) {
       return res.status(404).json({ error: "Job not found" });
     }
