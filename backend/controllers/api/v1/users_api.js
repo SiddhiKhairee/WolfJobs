@@ -1,6 +1,6 @@
 const User = require("../../../models/user");
 const jwt = require("jsonwebtoken");
-const Food = require("../../../models/food");
+const bcrypt = require("bcrypt");
 const History = require("../../../models/history");
 const Job = require("../../../models/job");
 const Application = require("../../../models/application");
@@ -14,7 +14,8 @@ module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email });
     res.set("Access-Control-Allow-Origin", "*");
-    if (!user || user.password != req.body.password) {
+    const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+    if (!user || !isValidPassword) {
       return res.json(422, {
         message: "Invalid username or password",
       });
@@ -71,7 +72,7 @@ module.exports.signUp = async function (req, res) {
       });
     }
 
-    User.findOne({ email: req.body.email }, function (err, user) {
+    User.findOne({ email: req.body.email }, async function (err, user) {
       if (user) {
         return res.json(400, {
           message: "Email already exist!",
@@ -79,29 +80,37 @@ module.exports.signUp = async function (req, res) {
       }
 
       if (!user) {
-        let user = User.create(req.body, function (err, user) {
-          if (err) {
-            return res.json(500, {
-              message: "Internal Server Error",
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+        let user = User.create(
+          { ...req.body, password: hashedPassword },
+          function (err, user) {
+            if (err) {
+              console.log(err)
+              return res.json(500, {
+                message: "Internal Server Error",
+              });
+            }
+
+            // let userr = User.findOne({ email: req.body.email });
+            res.set("Access-Control-Allow-Origin", "*");
+            return res.json(200, {
+              message:
+                "Sign Up Successful, here is your token, plz keep it safe",
+
+              data: {
+                //user.JSON() part gets encrypted
+
+                token: jwt.sign(user.toJSON(), "wolfjobs", {
+                  expiresIn: "100000",
+                }),
+                user,
+              },
+              success: true,
             });
           }
-
-          // let userr = User.findOne({ email: req.body.email });
-          res.set("Access-Control-Allow-Origin", "*");
-          return res.json(200, {
-            message: "Sign Up Successful, here is your token, plz keep it safe",
-
-            data: {
-              //user.JSON() part gets encrypted
-
-              token: jwt.sign(user.toJSON(), "wolfjobs", {
-                expiresIn: "100000",
-              }),
-              user,
-            },
-            success: true,
-          });
-        });
+        );
       } else {
         return res.json(500, {
           message: "Internal Server Error",
@@ -587,5 +596,3 @@ module.exports.verifyOtp = async function (req, res) {
     });
   }
 };
-
-
