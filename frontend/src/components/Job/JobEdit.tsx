@@ -75,7 +75,7 @@ const JobEdit = () => {
         location: data.location,
         pay: data.pay,
         description: data.description,
-        requiredSkills: data.requiredSkills,
+        requiredSkills: requiredSkills,
     };
     console.log(body);
     axios.post(url, body).then((res) => {

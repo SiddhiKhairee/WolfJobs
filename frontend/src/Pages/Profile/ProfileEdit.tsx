@@ -41,10 +41,9 @@ const ProfileEdit = ({ props }: { props: any }) => {
     skills,
     phonenumber,
     availability,
-    gender,
-    hours,
+    gender
   } = props;
-  console.log('prop',props);
+  //console.log('prop',props);
   const form = useForm<FormValues>({
     defaultValues: {
       name: name,
@@ -54,8 +53,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
       skills: skills,
       phonenumber: phonenumber,
       availability: availability,
-      gender: gender,
-      hours: hours,
+      gender: gender
     },
   });
   const [availabilityDrop, setAvailabilityDtop] = useState(availability);
@@ -86,7 +84,6 @@ const ProfileEdit = ({ props }: { props: any }) => {
       password,
       address: data.address,
       availability: availabilityDrop,
-      hours: data.hours,
       gender: data.gender,
       skills: newskills,
       phonenumber: data.phonenumber,
@@ -98,7 +95,8 @@ const ProfileEdit = ({ props }: { props: any }) => {
         return;
       }
       toast.success("Saved profile");
-      login(email, password, navigate);
+      navigate("/logout");
+      //login(email, password, navigate);
     });
   };
 
@@ -127,7 +125,7 @@ const ProfileEdit = ({ props }: { props: any }) => {
             <TextField
               label="Email"
               type="email"
-              {...register("address", {
+              {...register("email", {
                 required: "Email is required",
               })}
               error={!!errors.email}
