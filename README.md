@@ -114,6 +114,16 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 **Step 1: Clone the Repository from this [link](https://github.com/deepr41/WolfJobs.git)**
 
+**Step 2: AI Script Setup**
+
+- run the virtual environment, activate it and isntall the package
+- please run the command below in the same directory
+
+`python3 -m venv .`
+`source ./bin/activate`
+`pip install spacy scikit-learn`
+`python -m spacy download en_core_web_sm`
+
 **Step 2: Backend Setup**
 
 - Open a terminal window and navigate to the backend directory by executing the command: _cd backend_
@@ -181,6 +191,7 @@ Your app is ready to be deployed!
     <td align="center"><a href="https://github.com/SiddhiKhairee"><img src="https://avatars.githubusercontent.com/SiddhiKhairee" width="100px;" alt=""/><br /><b>Siddhi Khairee</b></a><br /></td>
   </tr>
 </table>
+
   ## Iteration 1:
   <table>
   <tr>
