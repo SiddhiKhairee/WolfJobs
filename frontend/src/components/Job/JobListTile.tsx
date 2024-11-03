@@ -61,7 +61,6 @@ const JobListTile = (props: any) => {
         item.jobid === data._id && item.applicantid === userId
     );
     setApplication(temp || null);
-    console.log("Found Application:", temp);
   }, [data, applicationList, userId]);
 
   const affilation = data.managerAffilication;
@@ -113,15 +112,12 @@ const JobListTile = (props: any) => {
   };
   const handleKnowMore = (e: any) => {
     e.stopPropagation();
-    console.log("Know more");
   };
   const handleFillQuestionnaire = (e: any) => {
     e.stopPropagation();
-    console.log("Fill Questionnaire");
   };
   const handleViewApplication = (e: any) => {
     e.stopPropagation();
-    console.log("View Application");
   };
   return (
     <div className="my-3" onClick={handleClick}>

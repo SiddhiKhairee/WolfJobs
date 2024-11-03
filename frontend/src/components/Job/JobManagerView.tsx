@@ -25,8 +25,6 @@ const JobManagerView = (props: any) => {
 
   const handleCloseJob = (e: any) => {
     e.preventDefault();
-    console.log("Close job");
-
     const body = {
       jobid: jobData._id,
     };

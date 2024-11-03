@@ -77,7 +77,6 @@ const JobEdit = () => {
         description: data.description,
         requiredSkills: requiredSkills,
     };
-    console.log(body);
     axios.post(url, body).then((res) => {
       if (res.status !== 200) {
         toast.error("Failed to update job");

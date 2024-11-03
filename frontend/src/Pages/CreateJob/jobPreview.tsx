@@ -37,7 +37,6 @@ const JobPreview = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    console.log(userId);
     const url = `http://localhost:8000/api/v1/users/createjob`;
     const body = {
       id: userId,
@@ -59,14 +58,12 @@ const JobPreview = () => {
         return;
       }
       toast.success("Job created");
-      console.log(details);
       navigate('/job-preview', { state: { details, questions } });
       navigate("/dashboard");
     });
   };
 
   useEffect(() => {
-    console.log(state);
   }, []);
 
   return (

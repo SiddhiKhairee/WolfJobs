@@ -22,10 +22,30 @@ describe('Tasks API', () => {
                 .get("/api/v1/users/fetchapplications")
                 
                 .end((err,response) => {
+                    response.body.should.be.a('object');
+                done();
+
+                });
+        })
+
+    })
+
+    describe("GET /api/v1/users/" , () => {
+
+        it("IT SHOULD RETURN ALL THE JOBS" , (done) => {
+            // const task = {
+            //     email:'shaangzb@gmail.com',
+            //     password:'123',
+                
+            // };
+
+            chai.request('http://localhost:8000')
+                .get("/api/v1/users/")
+                
+                .end((err,response) => {
                     
                     response.body.should.be.a('object');
     
-                    console.log('*********',response.body)
                   
 
                 done();
@@ -50,35 +70,6 @@ describe('Tasks API', () => {
                 .end((err,response) => {
                     
                     response.body.should.be.a('object');
-    
-                    console.log('*********',response.body)
-                  
-
-                done();
-
-                });
-        })
-
-    })
-
-    describe("GET /api/v1/users/" , () => {
-
-        it("IT SHOULD RETURN ALL THE JOBS" , (done) => {
-            // const task = {
-            //     email:'shaangzb@gmail.com',
-            //     password:'123',
-                
-            // };
-
-            chai.request('http://localhost:8000')
-                .get("/api/v1/users/")
-                
-                .end((err,response) => {
-                    
-                    response.body.should.be.a('object');
-    
-                    console.log('*********',response.body)
-                  
 
                 done();
 
@@ -114,8 +105,6 @@ describe('Tasks API', () => {
                 .end((err,response) => {
                     
                     response.body.should.be.a('object');
-    
-                    console.log('*********',response.body)
                   
 
                 done();
@@ -147,9 +136,6 @@ describe('Tasks API', () => {
                 .end((err,response) => {
                     
                     response.body.should.be.a('object');
-    
-                    console.log('*********',response.body.users)
-                  
 
                 done();
 
@@ -174,7 +160,6 @@ describe('Tasks API', () => {
                     
                     response.body.should.be.a('object');
     
-                    console.log('*********',response.body)
                   
 
                 done();

@@ -32,7 +32,6 @@ const Resume: React.FC = () => {
         );
 
         if (response.status === 201) {
-          console.log("Resume uploaded successfully");
           toast.success("Resume Uploaded Successfully. Sign out and sign back in to see changes!");
         }
       } catch (error) {

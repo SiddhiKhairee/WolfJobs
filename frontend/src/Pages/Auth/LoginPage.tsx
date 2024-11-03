@@ -31,8 +31,6 @@ const LoginPage = () => {
   const { errors } = formState;
 
   const onSubmit = (data: FormValues) => {
-    console.log("form submitted");
-    console.log(data);
     login(data.email, data.password, navigate);
   };
 
