@@ -23,8 +23,8 @@ const applicationSchema = new mongoose.Schema({
     default: "",
   },
   applicantskills: {
-    type: String,
-    default: "",
+    type: Array,
+    default: [],
   },
   phonenumber: {
     type: String,
