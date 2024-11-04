@@ -45,10 +45,6 @@
   
 - Change skill and required skill to dropdownlist so the users and managers can easily select the skill-set they want and avoid strange answers.
 
-# Presentation Video
-
-[![Watch the video](https://github.com/deepr41/WolfJobs/blob/master/GIFs/Video%20Thumbnail.png)](http://www.youtube.com/watch?v=kMgLUrDiYEw)
-
 # About Us
 
 Eager to dive into a side hustle or seize a full-time job opportunity? Look no further than WolfJobs. Our platform is the ultimate connector between recruiters in need of talent for both short-term and full-time roles and candidates seeking the freedom to choose. Dive in, earn your share, and opt out whenever you want – or stay on for a longer journey!
