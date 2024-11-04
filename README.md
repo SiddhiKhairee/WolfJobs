@@ -73,35 +73,35 @@ At WolfJobs, it’s not just about work – it's about joining a vibrant pack wh
 
 ### Signup & Login
 
-![Signup & Login](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Student%20-%20Sign%20Up%20%26%20Login.gif)
+![Signup & Login](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/SignupAndLogin.gif)
 
 ### Student Applies for Job
 
-![Apply for Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Student%20Applies%20to%20a%20Job.gif)
+![Apply for Job](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/Apply.gif)
 
 ### Application Status & Questionaire
 
-![Questionaire](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Applicant%20Filling%20answers.gif)
+![Questionaire](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/Question.gif)
 
 ## Manager Side
 
-### Manager Sign Up
-![Manager Sign Up](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Sign%20Up.gif)
-
-### Manager Login
-![Manager Login](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Login.gif)
+### Manager Sign Up and Login
+![Manager Sign Up](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/ManagerSignupLoginin.gif)
 
 ### Edit Profile
-![Edit Profile](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Open%20%26%20Edit%20Profile.gif)
+![Edit Profile](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/ProfileEdit.gif)
 
-### Add/Close Job
-![Add/Close Job](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Add%20%26%20Close%20Job.gif)
+### Add Job
+![Add Job](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/AddJob.gif)
+
+###  Close Job
+![Close Job](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/CloseJob.gif)
 
 ### Screening
-![Screening](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Screening.gif)
+![Screening](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/screening.gif)
 
 ### Review & Accept Applications
-![Review Applications](https://github.com/deepr41/WolfJobs/blob/GIF-Update/GIFs/Manager%20-%20Grade%2C%20Review%20%26%20Accept%20Candidates.gif)
+![Review Applications](https://github.com/SiddhiKhairee/WolfJobs/blob/master/GIFs/iteration3/Accept.gif)
 
 
 # Installation Instructions for Project Setup
